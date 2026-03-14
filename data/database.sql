@@ -7,26 +7,20 @@
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
+-- Database initialization script for MySQL container
+-- Database 'sms_demo' is already created by MYSQL_DATABASE environment variable
+-- This script will be executed automatically when MySQL container starts for the first time
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `sms_demo`
--- Create database if not exists
---
-CREATE DATABASE IF NOT EXISTS `sms_demo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `sms_demo`;
+SET NAMES utf8mb4;
 
 -- Disable foreign key checks temporarily to allow data insertion
 SET FOREIGN_KEY_CHECKS = 0;
 
+
+create database bicycle_web;
+use bicycle_web;
 -- --------------------------------------------------------
 
 --
@@ -1018,10 +1012,5 @@ ALTER TABLE `product_specifications`
 ALTER TABLE `test_ride_schedules`
   ADD CONSTRAINT `test_ride_schedules_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
+-- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
-
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
