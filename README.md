@@ -1,80 +1,54 @@
+# Bicycle Web Backend (NestJS)
 
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Dự án backend cho hệ thống bán xe đạp, sử dụng **NestJS**, **MySQL** và **TypeORM**.
 
-## Description
+## 🚀 Hướng dẫn khởi chạy
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### 1. Yêu cầu hệ thống
+- **Node.js**: v18+ (khuyên dùng v20+)
+- **MySQL**: v8.0+
 
-## Project setup
-
+### 2. Cài đặt dependencies
+Mở terminal tại thư mục `bicycle-web` và chạy:
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
+### 3. Cấu hình môi trường (.env)
+Sao chép file `.env.example` thành `.env` (nếu chưa có) và cập nhật thông tin kết nối database:
+```env
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASS=your_password
+DB_NAME=bicycle_web
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+PORT=3000
+JWT_SECRET=your_jwt_secret_key
 ```
 
-## Run tests
+### 4. Thiết lập Cơ sở dữ liệu
+1. Mở MySQL Client (như MySQL Workbench, Navicat hoặc Terminal).
+2. Tạo database mới tên là `bicycle_web`.
+3. Import dữ liệu từ file: `data/database.sql`.
+   - Lệnh Terminal: `mysql -u root -p bicycle_web < data/database.sql`
 
+### 5. Chạy ứng dụng
 ```bash
-# unit tests
-$ npm run test
+# Chế độ phát triển (watch mode)
+npm run start:dev
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# Chế độ Production
+npm run build
+npm run start:prod
 ```
 
-## Deployment
+## 📚 Tài liệu API (Swagger)
+Sau khi start server, bạn có thể truy cập tài liệu API chi tiết tại:
+[http://localhost:3000/api](http://localhost:3000/api)
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-# backend_bicycle_web
+## 📁 Cấu trúc thư mục chính
+- `src/modules`: Chứa các module nghiệp vụ (Products, Orders, Auth, etc.)
+- `src/common`: Chứa các cấu hình chung, database connection, middlewares.
+- `uploads/`: Thư mục lưu trữ ảnh sản phẩm tải lên.
+- `data/`: Chứa file SQL mẫu.
